@@ -1,1 +1,1 @@
-export const getAllMaterials = (state:any) => state.materials.material.byId
+export const getAllMaterials = (state:any) => state.data.allData.materials.allId

@@ -29,7 +29,7 @@ export const startRequestMaterial = () =>{
     }
 }
 
-export const successRequestMaterial = (material:Array<any>) =>{
+export const successRequestMaterial = (material:any) =>{
     return {
         type: ActionsType.FETCH_MATERIAL_SUCCESS,
         payload: material

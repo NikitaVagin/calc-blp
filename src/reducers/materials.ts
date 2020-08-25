@@ -2,14 +2,14 @@ import {ActionsType} from '../constants/constants';
 
 
 export type initialStateType = {
-        material: Object,
+        allData: Object,
         error: Object | null,
         loading: boolean
     
 }
 
 const initialState:initialStateType = {
-        material: {},
+        allData: {},
         error: null,
         loading: true
 
@@ -27,13 +27,13 @@ const reducer = (state:any, action:any) => {
                 }
             case(ActionsType.FETCH_MATERIAL_SUCCESS):
             return {
-                    material: action.payload,
+                    allData: action.payload,
                     error: null,
                     loading: false
             }
             case(ActionsType.FETCH_MATERIAL_ERROR):
                 return {
-                    material: state.materials.material,
+                    allData: state.allData,
                     error: action.payload,
                     loading: false
                 }

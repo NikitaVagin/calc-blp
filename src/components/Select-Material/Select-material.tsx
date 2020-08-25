@@ -47,13 +47,14 @@ const MapSelectMaterials = ({materials, selectMaterial}:any) =>{
 
 
 const mapStateToProps = (state:any) =>{
-    const {materials: {error, loading}, currentValuesBoat: {idMaterial}} = state;
-       return{
-            materials: getAllMaterials(state),
-            error: error,
-            loading: loading,
-            idMaterial
-       } 
+    // const {currentValuesBoat: {idMaterial}} = state;
+    console.log(state.data.allData.engines.byId)
+       return {
+            materials: state.data.allData.byId,
+            error: state.data.error,
+            loading: state.data.loading,
+            idMaterial: state.currentValuesBoat.idMaterial
+       }
 }
 
 const mapDispatchToProps = (dispatch:Function) =>{ 

@@ -7,7 +7,36 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.main{
+  background-color: #1890FF;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container-in-tabs{
+  background-color: white;
+  border-end-end-radius: 4px;
+}
+
+.card-container > .ant-tabs-card .ant-tabs-content {
+  height: fit-content;
+  margin-top: -16px;
+}
+.calculator-body{
+  padding: 1rem;
+}
+.ant-tabs-card.ant-tabs-top > .ant-tabs-nav .ant-tabs-tab:not(:last-of-type){
+  margin-right: 3px !important;
+}
+.ant-divider-horizontal.ant-divider-with-text{
+  margin-bottom: 5px !important;
+  margin-top: 25px !important;
+}
+.radio-container:not(:last-of-type){
+  margin-right: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+.ant-radio-wrapper{
+  margin-right: 0 !important;
 }

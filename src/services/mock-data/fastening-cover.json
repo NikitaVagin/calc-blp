@@ -1,0 +1,33 @@
+{
+    "fastening-cover": [
+       {
+        "id": null,
+        "name": "Крепление на кнопках",
+        "price": 2500,
+        "description": "Крепление на кнопках, это очень надежное крепление...",
+        "image": "https://www.comdir.co.uk/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/r/c/rcjqgqhkxslgvtttvo11_conf-pull-the-dot-fastener-press-studs.jpg"
+       }
+    ],
+    "additional-options": {
+        "options-for-boat": [
+            {
+                "id": null,
+                "name": "Индивидуальный крой",
+                "coefficient": 1.2,
+                "description": "Индвидуальный крой позволяет делать то-то",
+                "image": "https://www.comdir.co.uk/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/r/c/rcjqgqhkxslgvtttvo11_conf-pull-the-dot-fastener-press-studs.jpg"
+            }
+        ],
+        "options-for-engine": [
+
+        ]
+    },
+    "engines": [
+        {
+            "id": null,
+            "name": "25-45 л.с",
+            "coefficient": 1,
+            "description": "dddd"
+        }
+    ]
+}

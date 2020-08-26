@@ -27,7 +27,7 @@ export default class MoySkladService {
     getMaterial = async () =>{
         const res = await this.getResourseApi('entity/product?filter=https://online.moysklad.ru/api/remap/1.1/entity/product/metadata/attributes/841d9497-d59a-11ea-0a80-09e90035f3d0=true');
         const materials = res.rows.map(this._transformMaterial);
-        const normMaterials = this._normolizeData(materials);
+        const normMaterials = {materials: this._normolizeData(materials)} ;
         return Object.assign({}, this._transformData(mockFasteningData), normMaterials)
     }
 

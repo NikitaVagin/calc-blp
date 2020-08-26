@@ -6,6 +6,7 @@ import SelectMaterial from '../Select-Material/Select-material'
 import InfoBtn from '../Info-Btn/Info-Btn';
 import {ModalName} from '../../constants/constants';
 import Modals from '../Modal-Window/Modal-Conducter';
+import {connect} from 'react-redux';
 const TabBoat = () =>{
 
     return(
@@ -77,5 +78,12 @@ const Sunbrella = () =>{
     </div>
   )
 }
+const mapStateToProps = (state:any) => {
+  // console.log(state.data.allData.engines.byId)
+    return{
+      error: state.data.error,
+      loading: state.data.loading, 
+    }
+}
 
-export default TabBoat;
+export default connect(mapStateToProps, null)(TabBoat);

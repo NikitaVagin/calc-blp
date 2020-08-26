@@ -2,14 +2,26 @@ import {ActionsType} from '../constants/constants';
 
 
 export type initialStateType = {
-        allData: Object,
+        allData: {
+                materials: Object,
+                engines: Object,
+                fasteningCover: Object,
+                optionsForBoat: Object,
+                optionsForEngine: Object
+        },
         error: Object | null,
         loading: boolean
     
 }
 
 const initialState:initialStateType = {
-        allData: {},
+        allData: {
+                materials: {},
+                engines: {},
+                fasteningCover: {},
+                optionsForBoat: {},
+                optionsForEngine: {}
+        },      
         error: null,
         loading: true
 

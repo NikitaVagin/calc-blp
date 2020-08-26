@@ -47,10 +47,8 @@ const MapSelectMaterials = ({materials, selectMaterial}:any) =>{
 
 
 const mapStateToProps = (state:any) =>{
-    // const {currentValuesBoat: {idMaterial}} = state;
-    console.log(state.data.allData.engines.byId)
        return {
-            materials: state.data.allData.byId,
+            materials: state.data.allData.materials.byId,
             error: state.data.error,
             loading: state.data.loading,
             idMaterial: state.currentValuesBoat.idMaterial

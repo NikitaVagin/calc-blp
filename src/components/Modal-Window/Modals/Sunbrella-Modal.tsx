@@ -1,16 +1,19 @@
 import React from 'react';
 import {Modal} from 'antd';
 const SunbrellaModal = (props:any) => {
-    const {stateModal, onCloseModal, title, body} = props;
-    console.log(props);
-    const visible =  stateModal? true: false
+    const {onCancel, title, footer, description, visible, image} = props;
     return (
-        <Modal visible={visible} footer={null} onCancel={()=> onCloseModal()}>
+        <Modal visible={visible} footer={footer} onCancel={onCancel}>
             <div>
-                {body}
+                <h1>{title}</h1>
+                <div>
+                    <img src={image} alt={title}></img>
+                </div>
+                {description}
             </div>
         </Modal>
     )
 }  
+
 
 export default SunbrellaModal;

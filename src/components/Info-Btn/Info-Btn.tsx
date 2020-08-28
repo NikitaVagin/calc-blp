@@ -8,13 +8,12 @@ type InfoBtnType = {
     onShowModal: Function,
     body:any
     title: string,
-    size?: string,
-    type: string
+    size?: string
 }
 
-const InfoBtn = ({nameModal, onShowModal, size = '1.2rem', title, body, type}:InfoBtnType) =>{
+const InfoBtn = ({image, onShowModal, size = '1.2rem', title, description, type}:any) =>{
     return  (
-        <span style={{cursor: 'pointer'}} onClick={() => onShowModal({nameModal, title, body})}><InfoCircleOutlined style={{fontSize: size}} type={type}/></span>
+        <span style={{cursor: 'pointer'}} onClick={() => onShowModal({image, title, description})}><InfoCircleOutlined style={{fontSize: size}} type={type}/></span>
     );
    
 }
@@ -24,5 +23,4 @@ const mapDispatchToProps = (dispatch:any) =>{
         onShowModal: (id:any) => dispatch(showModalindow(id))
     }
 }
-
 export default connect(null, mapDispatchToProps)(InfoBtn);

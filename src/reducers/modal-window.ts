@@ -1,18 +1,13 @@
 import {ActionsType} from '../constants/constants';
 
+//Поменять типы
 export type initialStateType = {
-        nameModal: string | null,
-        type: string | null
+        image: string | null,
         title: string | null,
         body: any
 }
 
-const initialState:initialStateType = {
-        nameModal: null,
-        type: null,
-        title: null,
-        body: null,
-}
+const initialState = null
 
 const reducer = (state:any, action:any) => {
     if(typeof state === 'undefined'){
@@ -21,15 +16,10 @@ const reducer = (state:any, action:any) => {
     switch(action.type){
         case(ActionsType.SHOW_MODAL_WINDOW):
         return {
-             ...action.payload
+             modalProps: action.payload
         }
         case(ActionsType.CLOSE_MODAL_WINDOW):
-        return {
-            nameModal: null,
-            type: null,
-            title: null,
-            body: null,
-        }
+        return null
     }
     return state;
 }

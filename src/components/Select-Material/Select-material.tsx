@@ -5,7 +5,7 @@ import { startRequestMaterial, selectMaterial} from '../../actions/actions'
 import {InfoCircleOutlined} from '@ant-design/icons';
 import ModalWindow from '../Modal-Window/Modal-Conducter';
 import InfoBtn from '../Info-Btn/Info-Btn';
-import {getAllMaterials} from '../../reducers/selectors';
+import {getAllMaterials, getMaterialById} from '../../reducers/selectors';
 
 const {Option} = Select;
 
@@ -20,8 +20,7 @@ const SelectMaterial = (props:any) => {
             <div>Loading...</div>
         )
     }
-
-    const InfoModalMaterial = props.idMaterial ? <InfoCircleOutlined /> : null
+    const InfoModalMaterial = props.idMaterial ? <InfoBtn title={props.idMaterial.name} description={props.idMaterial.description} image={props.idMaterial.image}/> : null
     return (
         <>
         <Divider orientation='left'>Выбор ткани</Divider>
@@ -35,7 +34,7 @@ const SelectMaterial = (props:any) => {
 
 const MapSelectMaterials = ({materials, selectMaterial}:any) =>{
     const selectChildren =  Object.keys(materials).map((key:any) => {
-        return <Option value={materials[key].price} key={key}>{materials[key].name}</Option>
+        return <Option value={materials[key].id} key={key}>{materials[key].name}</Option>
     })
 
     return (
@@ -47,11 +46,12 @@ const MapSelectMaterials = ({materials, selectMaterial}:any) =>{
 
 
 const mapStateToProps = (state:any) =>{
+    const allMatetialsById  = getAllMaterials(state);
        return {
-            materials: state.data.allData.materials.byId,
+            materials: allMatetialsById,
             error: state.data.error,
             loading: state.data.loading,
-            idMaterial: state.currentValuesBoat.idMaterial
+            idMaterial: getMaterialById(allMatetialsById, state.currentValuesBoat.idMaterial)
        }
 }
 

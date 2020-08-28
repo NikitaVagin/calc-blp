@@ -1,19 +1,31 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Divider, InputNumber,  Radio, Checkbox, Typography} from "antd";
 import {QuestionCircleOutlined, CopyOutlined, InfoCircleOutlined} from '@ant-design/icons';
 import InputNumbers from '../Input-Number/Input-Number'
 import SelectMaterial from '../Select-Material/Select-material'
 import InfoBtn from '../Info-Btn/Info-Btn';
-import {ModalName} from '../../constants/constants';
 import Modals from '../Modal-Window/Modal-Conducter';
 import {connect} from 'react-redux';
-const TabBoat = () =>{
+import MoySkladApi from '../../services/moysklad-api';
 
+const getImage = async () => {
+  const moysklad = new MoySkladApi();
+  const image = await moysklad.getImage();
+  return String(image)
+}
+
+const TabBoat = () => {
+  const [data, setData]  = useState('');
+
+  useEffect( () => {
+    getImage().then((data:any) => setData(data))
+  }, []);
+    const img = data ? <img src={data}></img> : null
     return(
         <>
           <div className='container-in-tabs'>
           <div className='calculator-body d-flex align-items-start flex-column'>
-              <SelectMaterial />
+              <SelectMaterial/>
               <InputNumbers title='Длина катера' placeholder='Введите длину катера в метрах'/>
               <InputNumbers title='Ширина катера' placeholder='Введите ширину катера в метрах'/>
               <Divider orientation='left'>Крепление тента</Divider>
@@ -56,8 +68,11 @@ const TabBoat = () =>{
                 </div>
               </div>
               <div className='d-flex  flex-column align-items-center' style={{width:'100%', marginTop: '2rem'}}>
-                <InfoBtn title='Sunbrella Plus' nameModal={ModalName.SUNBRELLA_MODAL} body={Sunbrella()} type='info'/>
+                {/* <InfoBtn title='Sunbrella Plus' nameModal={ModalName.SUNBRELLA_MODAL} body={Sunbrella()} type='info'/> */}
                 <Modals />
+              </div>
+              <div>
+                {img}
               </div>
           </div>
         </div>

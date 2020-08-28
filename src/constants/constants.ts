@@ -1,8 +1,3 @@
-export enum ModalName{
-    SUNBRELLA_MODAL = 'SUNBRELLA_MODAL',
-    OXFORD_900_D = 'OXFORD_900_D',
-    SEASTAR_ACRIL = 'SEASTAR_ACRIL'
-}
 
 export enum ActionsType {
     SHOW_MODAL_WINDOW = 'SHOW_MODAL_WINDOW',

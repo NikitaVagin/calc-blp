@@ -1,7 +1,7 @@
 import React from 'react';
 import {InfoCircleOutlined} from '@ant-design/icons';
 import {connect} from 'react-redux';
-import {showModalindow} from '../../actions/actions'
+import {startShowModal} from '../../actions/actions'
 
 type InfoBtnType = {
     nameModal: string,
@@ -20,7 +20,7 @@ const InfoBtn = ({image, onShowModal, size = '1.2rem', title, description, type}
 
 const mapDispatchToProps = (dispatch:any) =>{
     return {
-        onShowModal: (id:any) => dispatch(showModalindow(id))
+        onShowModal: (data:any) => dispatch(startShowModal(data))
     }
 }
 export default connect(null, mapDispatchToProps)(InfoBtn);

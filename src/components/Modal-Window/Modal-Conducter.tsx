@@ -2,9 +2,9 @@ import React from 'react';
 import {Modal} from 'antd';
 import { connect } from 'react-redux';
 import {closeModalindow} from '../../actions/actions';
-import SunbrellaModal from './Modals/Sunbrella-Modal';
+import ModalWindow from './Modals/Modal-Window'
 
- const ModalWindow = (props:any) => {
+ const ModalConducrer = (props:any) => {
     const {modalConfiguration} = props;
     const defaultProps = {
         visible: true,
@@ -16,7 +16,7 @@ import SunbrellaModal from './Modals/Sunbrella-Modal';
 
     if(modalConfiguration) {
         const {modalProps = {}} = modalConfiguration;
-        renderComponent =  <SunbrellaModal {...Object.assign({}, defaultProps, modalProps)}/> 
+        renderComponent =  <ModalWindow {...Object.assign({}, defaultProps, modalProps)}/> 
     }
         return <>{renderComponent}</>
 }
@@ -31,4 +31,4 @@ const mapDispatchToProps = (dispatch:any) =>{
         onCloseModal: () => dispatch(closeModalindow())
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ModalWindow);
+export default connect(mapStateToProps, mapDispatchToProps)(ModalConducrer);

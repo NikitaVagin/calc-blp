@@ -9,6 +9,13 @@ export const selectMaterial = (id:any) =>{
     }
 }
 
+export const startShowModal = (obj:object) => {
+    return {
+        type: ActionsType.START_SHOW_MODAL,
+        payload: obj
+    }
+}
+
 export const showModalindow = (obj:object) => {
     return {
         type: ActionsType.SHOW_MODAL_WINDOW,

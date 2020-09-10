@@ -11,15 +11,7 @@ const {Option} = Select;
 
 
 const SelectMaterial = (props:any) => {
-    useEffect(() =>{
-        props.fetchMaterial()
-    },[]);
-
-    if(props.loading){
-        return (
-            <div>Loading...</div>
-        )
-    }
+    
     const InfoModalMaterial = props.idMaterial ? <InfoBtn title={props.idMaterial.name} description={props.idMaterial.description} image={props.idMaterial.image}/> : null
     return (
         <>
@@ -57,7 +49,6 @@ const mapStateToProps = (state:any) =>{
 
 const mapDispatchToProps = (dispatch:Function) =>{ 
         return {
-            fetchMaterial: () => dispatch(startRequestMaterial()),
             selectMaterial: (id:any) => dispatch(selectMaterial(id))
         }
 

@@ -1,32 +1,51 @@
 import mockFasteningData from './mock-data/fastening-cover.json'
 import {v4 as uuidv4 } from 'uuid';
-import { URL } from 'url';
 import { resolve } from 'dns';
 import { rejects } from 'assert';
+
+// interface URL {
+//     createObjectURLL:any
+// }
+// declare let url: URL
 
 export default class MoySkladService {
     login = 'admin@falkentt3'
     password = '9e3cb83ca2'
     logPasB64 = btoa(`${this.login}:${this.password}`);
-    _apiBase = 'https://online.moysklad.ru/api/remap/1.1/';
-    _proxy = 'https://thingproxy.freeboard.io/fetch/'
-    _proxy1 = 'http://192.168.1.10:5000/'
+    _apiBase = 'https://online.moysklad.ru/api/remap/1.2/';
+    _proxy = 'http://192.168.1.10:5000/'
+    _headers = {
+        'Authorization': `Bearer 7d1d4b6d841acc1d8b6589e44a54008e3d16ca75`,
+        'Cache-Control': 'no-cache',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive'
+    }
 
     async getImage (metaImg:string) {
-       const res = await  fetch(`http://192.168.1.10:5000/`, {
+    const regExp = /moysklad/;
+       const res = await  fetch(this._proxy, {
              method: 'GET',
-             headers: {
-                'Target-Endpoint': metaImg,
-             }
+             headers: Object.assign({'Target-Endpoint': metaImg},this._headers)
          })
-
-        const blobImage = await res.blob();
-
-        return await this._getBase64(blobImage);
-        
+        if(!regExp.test(metaImg)){
+            const blob =  await res.blob();
+            console.log(blob)
+            return this._createObjectUrl(blob);
+        }
+        const obj = await res.json()
+        const fetchImage = await fetch(this._proxy, {
+            method: 'GET',
+            headers: Object.assign({'Target-Endpoint': obj.rows[0].meta.downloadHref}, this._headers)
+        })
+         const blob = await fetchImage.blob();
+        return this._createObjectUrl(blob);
          
     }
-    _getBase64 = (blob:any) => {
+    _createObjectUrl(blob:Blob){
+        return URL.createObjectURL(blob)
+    }
+
+    _toBase64 = (blob:any) => {
         const reader = new FileReader();
         return new Promise((resolve, reject) => {
             reader.readAsDataURL(blob);
@@ -38,16 +57,8 @@ export default class MoySkladService {
         })
     }
     async getResourseApi (url: string) {
-        const res = await fetch(`${this._proxy1}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer 7d1d4b6d841acc1d8b6589e44a54008e3d16ca75`,
-                'Accept': '*/*',
-                'Cache-Control': 'no-cache', 
-                'Target-Endpoint': 'https://online.moysklad.ru/api/remap/1.2/entity/product?filter=https://online.moysklad.ru/api/remap/1.2/entity/product/metadata/attributes/841d9497-d59a-11ea-0a80-09e90035f3d0=true',
-                'Accept-Encoding': 'gzip, deflate, br',
-                'Connection': 'keep-alive'
-               }
+        const res = await fetch(`${this._proxy}`, {
+            headers: Object.assign({'Target-Endpoint': `${this._apiBase}${url}`}, this._headers)
         });
         if(!res.ok){
             console.error(`Не могу получить информацию из ${url}, возвращает ${res.status}`)
@@ -66,7 +77,7 @@ export default class MoySkladService {
             return {
                 id: material.id,
                 name: material.name,
-                image: material.image.meta.href,
+                image: material.images.meta.href,
                 price: material.salePrices[0].value / 100,
                 description: material.description
             }

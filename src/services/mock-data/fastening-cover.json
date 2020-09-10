@@ -4,10 +4,16 @@
         "name": "Крепление на кнопках",
         "price": 2500,
         "description": "Крепление на кнопках, это очень надежное крепление...",
-        "image": "https://www.comdir.co.uk/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/r/c/rcjqgqhkxslgvtttvo11_conf-pull-the-dot-fastener-press-studs.jpg"
+        "image": "https://www.moykaf1.ru/images/servis/himch1.jpg"
        },
        {
         "name": "Крепление по боку",
+        "price": 200,
+        "description": "Крепление на кнопках, это очень надежное крепление...",
+        "image": "https://www.comdir.co.uk/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/r/c/rcjqgqhkxslgvtttvo11_conf-pull-the-dot-fastener-press-studs.jpg"
+       },
+       {
+        "name": "Крепление сверху",
         "price": 200,
         "description": "Крепление на кнопках, это очень надежное крепление...",
         "image": "https://www.comdir.co.uk/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/r/c/rcjqgqhkxslgvtttvo11_conf-pull-the-dot-fastener-press-studs.jpg"
@@ -18,7 +24,19 @@
             "name": "Индивидуальный крой",
             "coefficient": 1.2,
             "description": "Индвидуальный крой позволяет делать то-то",
-            "image": "https://www.comdir.co.uk/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/r/c/rcjqgqhkxslgvtttvo11_conf-pull-the-dot-fastener-press-studs.jpg"
+            "image": "https://www.moykaf1.ru/images/servis/himch1.jpg"
+        },
+        {
+            "name": "Колпак",
+            "coefficient": 1.2,
+            "description": "Индвидуальный крой позволяет делать то-то",
+            "image": "https://www.moykaf1.ru/images/servis/himch1.jpg"
+        },
+        {
+            "name": "Винта!",
+            "coefficient": 1.2,
+            "description": "Индвидуальный крой позволяет делать то-то",
+            "image": "https://www.moykaf1.ru/images/servis/himch1.jpg"
         }
     ],
     "optionsForEngine": [
